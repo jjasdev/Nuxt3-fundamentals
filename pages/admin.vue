@@ -1,8 +1,8 @@
 <script setup lang="ts">
 definePageMeta({
-	middleware: ["logger"],
+	middleware: ["auth"],
 });
 </script>
 <template>
-	<MovieSearch />
+	<div>Hello user</div>
 </template>

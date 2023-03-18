@@ -10,7 +10,6 @@ definePageMeta({
 			Username
 			<input type="text" />
 		</label>
-		<h1>Login</h1>
 		<label>
 			Password
 			<input type="password" />
