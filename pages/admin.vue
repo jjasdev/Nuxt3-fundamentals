@@ -4,5 +4,5 @@ definePageMeta({
 });
 </script>
 <template>
-	<div>Hello user</div>
+	<div>My dashboard</div>
 </template>
