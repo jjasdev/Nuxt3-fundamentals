@@ -1,16 +1,37 @@
 <script setup>
 const route = useRoute();
-const { data } = useFetch(
+const { data } = await useFetch(
 	`http://www.omdbapi.com/?apikey=54639314&i=${route.params.id}`,
 	{
-		pick: ["Plot", "Title", "Error"],
+		pick: ["Plot", "Poster", "Title", "Error"],
 		key: `/movies/${route.params.id}`,
 	}
 );
 
-if (data.value.Error === "Incorrect IMDb ID.") {
+if (data.value?.Error === "Incorrect IMDb ID.") {
 	showError({ statusCode: 404, statusMessage: "Page Not Found" });
 }
+useHead({
+	title: data.value?.Title,
+	meta: [
+		{
+			name: "description",
+			content: data.value.Plot,
+		},
+		{
+			property: "og:description",
+			content: data.value.Plot,
+		},
+		{
+			property: "og:image",
+			content: data.value.Poster,
+		},
+		{
+			name: "twitter:card",
+			content: summary_large_image,
+		},
+	],
+});
 
 // const { data } = await useAsyncData(
 // 	() => {
@@ -31,7 +52,6 @@ if (data.value.Error === "Incorrect IMDb ID.") {
 // const res = await $fetch(
 // 	`http://www.omdbapi.com/?apikey=54639314&i=${route.params.id}`
 // );
-console.log(route.params.id);
 </script>
 <template>
 	<pre>

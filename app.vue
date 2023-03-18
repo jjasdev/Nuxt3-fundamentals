@@ -1,3 +1,10 @@
+<script setup lang="ts">
+useHead({
+	titleTemplate: (titleChunk) => {
+		return titleChunk ? `${titleChunk} - Movie Site` : `Movie Site`;
+	},
+});
+</script>
 <template>
 	<div>
 		<nav>
